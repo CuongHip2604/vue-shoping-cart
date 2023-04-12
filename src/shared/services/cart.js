@@ -16,4 +16,14 @@ export default {
       .then((res) => res)
       .catch((error) => error);
   },
+  deleteOrder: (params) => {
+    return callAPI("delete", `orders/${params.id}`)
+      .then((res) => res)
+      .catch((error) => error);
+  },
+  payment: (payload) => {
+    return callAPI("post", `payments`, payload)
+      .then((res) => res)
+      .catch((error) => error);
+  },
 };

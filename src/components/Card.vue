@@ -16,7 +16,7 @@
         {{ product.attributes.name }}
       </div>
       <div class="font-semibold text-lg text-neutral-700">
-        đ{{ product.attributes.price }}
+        {{ formatCurrency(product.attributes.price) }}
       </div>
     </div>
   </div>
@@ -24,6 +24,7 @@
 
 <script setup>
 import IconCard from "../assets/icons/ic-cart.svg";
+import { useFormatCurrency } from "../hooks/useFormatCurrency";
 
 const props = defineProps({
   product: {
@@ -33,6 +34,8 @@ const props = defineProps({
 });
 
 const $emit = defineEmits("add-cart");
+
+const { formatCurrency } = useFormatCurrency();
 
 const addToCart = () => {
   $emit("add-cart", props.product);

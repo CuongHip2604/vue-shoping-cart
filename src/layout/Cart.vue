@@ -1,6 +1,6 @@
 <template>
-  <div class="relative cursor-pointer">
-    <IconCart @click="showCart" />
+  <div class="relative">
+    <IconCart class="cursor-pointer" @click="showCart" />
 
     <div
       v-if="total"
@@ -10,60 +10,40 @@
       {{ total > 9 ? "9+" : total }}
     </div>
 
-    <div
-      v-if="isOpen"
-      class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 translate-x-full after:contents after:w-full after:h-screen after:bg-neutral-800/70"
-      :class="{ 'transform-none': isOpen }"
-    >
-      <!-- <div
-        class="w-full sm:w-1/2 md:w-2/5` lg:w-2/6 xl:w-1/5 ml-auto h-full p-4 bg-white"
-      >
-        test
-      </div> -->
-      test
-    </div>
-
-    <!-- <div
-      v-if="isOpen"
-      @click.self="hiddenCart"
-      class="bg-neutral-800/70 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-    >
+    <Transition name="slide-fade">
       <div
-        class="w-full sm:w-1/2 md:w-2/5` lg:w-2/6 xl:w-1/5 ml-auto h-full z-50"
+        @click.self="hiddenCart"
+        v-if="isOpen"
+        class="fixed top-0 right-0 z-50 h-screen overflow-y-auto transition-transform bg-gray-900/50 w-full transform-none"
       >
         <div
-          class="translate duration-300 h-full"
-          :class="{
-            'translate-x-full opacity-0': !isOpen,
-            'translate-x-0 opacity-100': isOpen,
-          }"
+          class="w-full relative sm:w-[410px] ml-auto h-full p-4 bg-white flex flex-col gap-4"
         >
-          <div
-            class="translate p-6 h-full border-0 relative flex flex-col w-full bg-white outline-none focus:outline-none"
-          >
-            <div
-              @click="hiddenCart"
-              class="absolute cursor-pointer right-6 top-6 w-[40px] h-[40px] bg-rose-500 flex justify-center items-center rounded-full"
-            >
-              <IconClose />
-            </div>
-          </div>
+          <Orders @onHiddenCart="hiddenCart" />
         </div>
       </div>
-    </div> -->
+    </Transition>
   </div>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import IconCart from "../assets/icons/ic-cart.svg";
-import IconClose from "../assets/icons/ic-close.svg";
 import { useCartStore } from "../store/cart";
+import Orders from "./Orders.vue";
 
 const cartStore = useCartStore();
 
 const isOpen = ref(false);
 const total = computed(() => cartStore.total);
+
+watch(isOpen, (value) => {
+  if (value) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+});
 
 const showCart = () => {
   isOpen.value = !isOpen.value;
@@ -74,4 +54,18 @@ const hiddenCart = () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(50%);
+  opacity: 0;
+}
+</style>

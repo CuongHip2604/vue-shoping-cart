@@ -1,5 +1,6 @@
 <template>
   <button
+    @click="onClick"
     class="relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full py-2 font-semibold border-2"
     :disabled="disabled"
     :class="{
@@ -24,6 +25,12 @@ defineProps({
   disabled: Boolean,
   width: String | Number,
 });
+
+const $emit = defineEmits(["onClick"]);
+
+const onClick = () => {
+  $emit("onClick");
+};
 </script>
 
 <style lang="scss" scoped></style>
