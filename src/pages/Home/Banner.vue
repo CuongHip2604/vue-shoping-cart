@@ -1,5 +1,5 @@
 <template>
-  <carousel :items-to-show="1" autoplay="5000" wrapAround>
+  <carousel :items-to-show="1" :autoplay="5000" wrapAround>
     <slide v-for="slide in 5" :key="slide">
       <div
         :style="{

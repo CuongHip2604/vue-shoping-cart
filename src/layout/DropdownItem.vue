@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-const { id } = defineProps({
+const props = defineProps({
   label: {
     type: String,
     required: true,
@@ -22,6 +22,6 @@ const { id } = defineProps({
 const emit = defineEmits(["onClick"]);
 
 const handleClicke = () => {
-  emit("onClick", id);
+  emit("onClick", props.id);
 };
 </script>

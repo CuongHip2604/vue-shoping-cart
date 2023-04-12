@@ -29,7 +29,7 @@
 
 "@esbuild/darwin-x64@0.17.15":
   version "0.17.15"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.17.15.tgz"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.17.15.tgz#9384e64c0be91388c57be6d3a5eaf1c32a99c91d"
   integrity sha512-NbImBas2rXwYI52BOKTW342Tm3LTeVlaOQ4QPZ7XuWNKiO226DisFk/RyPk3T0CKZkKMuU69yOvlapJEmax7cg==
 
 "@esbuild/freebsd-arm64@0.17.15":
@@ -137,6 +137,11 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@tailwindcss/line-clamp@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.npmjs.org/@tailwindcss/line-clamp/-/line-clamp-0.4.4.tgz"
+  integrity sha512-5U6SY5z8N42VtrCrKlsTAA35gy2VSyYtHWCsg1H87NU1SXnEfekTVlrga9fzUDrrHcGi2Lb5KenUWb4lRQT5/g==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -1127,7 +1132,7 @@ vue-toast-notification@^3.1.1:
 
 vue3-carousel@^0.2.16:
   version "0.2.16"
-  resolved "https://registry.yarnpkg.com/vue3-carousel/-/vue3-carousel-0.2.16.tgz#032376ea2b178f969f47f23dbf67d9cf299f8f7b"
+  resolved "https://registry.npmjs.org/vue3-carousel/-/vue3-carousel-0.2.16.tgz"
   integrity sha512-M0erVlg00e79YF1N0puxPfGSpVTTkk0RUHgJaqv+gerw5sZC33SL5NYHJLqit1Kbm8ebS/KyiTi9gjtW2D6bZw==
 
 vue@^3.2.47:

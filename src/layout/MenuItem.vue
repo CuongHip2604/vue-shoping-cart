@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-const { id, label, isActive } = defineProps({
+const props = defineProps({
   label: {
     type: String,
     required: true,
@@ -30,6 +30,6 @@ const { id, label, isActive } = defineProps({
 const $emit = defineEmits(["onClick"]);
 
 const handleClick = () => {
-  $emit("onClick", id);
+  $emit("onClick", props.id);
 };
 </script>

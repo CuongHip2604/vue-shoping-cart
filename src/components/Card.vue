@@ -1,17 +1,18 @@
 <template>
   <div
-    class="h-[444px] w-[256px] p-4 flex flex-col gap-6 hover:shadow-md hover:cursor-pointer group"
+    class="h-[444px] w-[256px] p-4 flex flex-col gap-6 hover:shadow-card hover:cursor-pointer group"
   >
     <div class="w-full h-[330px] relative">
       <img class="h-full object-cover" :src="product.attributes.image" />
       <div
+        @click="addToCart"
         class="group-hover:visible invisible w-[40px] h-[40px] z-10 rounded-full bg-rose-500 absolute -bottom-5 right-4 flex items-center justify-center"
       >
         <IconCard class="icon__card" />
       </div>
     </div>
     <div class="flex flex-col gap-2 text-start">
-      <div class="font-light text-lg text-neutral-500">
+      <div class="line-clamp-2 h-14 font-light text-lg text-neutral-500">
         {{ product.attributes.name }}
       </div>
       <div class="font-semibold text-lg text-neutral-700">
@@ -24,12 +25,18 @@
 <script setup>
 import IconCard from "../assets/icons/ic-cart.svg";
 
-defineProps({
+const props = defineProps({
   product: {
     type: Object,
     default: {},
   },
 });
+
+const $emit = defineEmits("add-cart");
+
+const addToCart = () => {
+  $emit("add-cart", props.product);
+};
 </script>
 
 <style lang="scss">

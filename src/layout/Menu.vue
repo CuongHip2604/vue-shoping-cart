@@ -4,7 +4,7 @@
       <menu-item
         :id="tab.key"
         :label="tab.value"
-        :is-active="tab.key === currentTab"
+        :is-active="tab.path === currentTab"
         @on-click="handleChangeTab"
         >{{ tab.value }}</menu-item
       >
@@ -13,30 +13,38 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import MenuItem from "./MenuItem.vue";
+import { useRoute, useRouter } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
 
 const tabs = reactive([
   {
     key: "1",
     value: "Home",
-    path: "/",
+    path: "/home",
   },
   {
     key: "2",
     value: "Clothes",
-    path: "/propducts",
+    path: "/products?category=clothes",
   },
   {
     key: "3",
     value: "Sport shoes",
-    path: "/propducts",
+    path: "/products?category=sport_shoes",
   },
 ]);
 
-const currentTab = ref("1");
+const currentTab = computed(() => {
+  return route.fullPath || "/home";
+});
 
 const handleChangeTab = (key) => {
-  currentTab.value = key;
+  const path = tabs.find((el) => el.key === key)?.path;
+
+  path && router.push(path);
 };
 </script>

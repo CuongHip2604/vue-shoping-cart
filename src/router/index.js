@@ -10,6 +10,16 @@ const routes = [
         name: "home",
         component: () => import("../pages/Home/index.vue"),
       },
+      {
+        path: "/products/:id",
+        name: "product-detail",
+        component: () => import("../pages/ProductDetail/index.vue"),
+      },
+      {
+        path: "/products",
+        name: "products",
+        component: () => import("../pages/Product/index.vue"),
+      },
     ],
   },
   {

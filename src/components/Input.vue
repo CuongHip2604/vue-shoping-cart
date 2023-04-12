@@ -25,33 +25,32 @@
 <script setup>
 import { computed } from "vue";
 
-const { width, errorMessage, label, icon, type, id, placeholder, disabled } =
-  defineProps({
-    id: {
-      type: String,
-      require: true,
-    },
-    label: {
-      type: String,
-      require: true,
-    },
-    type: {
-      type: String,
-      default: "text",
-    },
-    placeholder: String,
-    disabled: Boolean,
-    errorMessage: String,
-    icon: Object,
-    width: String | Number,
-  });
+const props = defineProps({
+  id: {
+    type: String,
+    require: true,
+  },
+  label: {
+    type: String,
+    require: true,
+  },
+  type: {
+    type: String,
+    default: "text",
+  },
+  placeholder: String,
+  disabled: Boolean,
+  errorMessage: String,
+  icon: Object,
+  width: String | Number,
+});
 
 const classBinding = computed(() => {
   return {
-    "border-rose-500": errorMessage,
-    "mt-2": label,
-    "pr-8": icon,
-    [`w-[${width}px]`]: width,
+    "border-rose-500": props.errorMessage,
+    "mt-2": props.label,
+    "pr-8": props.icon,
+    [`w-[${props.width}px]`]: props.width,
   };
 });
 </script>
