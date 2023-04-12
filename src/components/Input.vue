@@ -12,6 +12,7 @@
       v-bind="$attrs"
       :class="classBinding"
       :disabled="disabled"
+      @input="onInput"
     />
     <small v-show="errorMessage" class="text-rose-500">{{
       errorMessage
@@ -45,6 +46,8 @@ const props = defineProps({
   width: String | Number,
 });
 
+const $emits = defineEmits(["onInput"]);
+
 const classBinding = computed(() => {
   return {
     "border-rose-500": props.errorMessage,
@@ -53,4 +56,9 @@ const classBinding = computed(() => {
     [`w-[${props.width}px]`]: props.width,
   };
 });
+
+const onInput = (e) => {
+  const keyword = e.target.value;
+  $emits("onInput", keyword);
+};
 </script>
