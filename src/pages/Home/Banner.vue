@@ -3,7 +3,7 @@
     <slide v-for="slide in 5" :key="slide">
       <div
         :style="{
-          'background-image': 'url(/src/assets/images/banner_1.png)',
+          'background-image': `url(${BannerPath})`,
         }"
         class="w-full h-[62vh] px-20 bg-no-repeat bg-cover bg-left-top"
       >
@@ -30,6 +30,7 @@
 <script setup>
 import Button from "../../components/Button.vue";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import BannerPath from "../../assets/images/banner_1.png";
 </script>
 
 <style lang="scss" scoped></style>
