@@ -100,7 +100,7 @@ const handleCheckout = async () => {
 
   hiddenCart();
 
-  $toast.showSuccess("Payment is successfull!");
+  $toast.showSuccess("Payment is successfull !");
 };
 
 const handleNavigate = () => {

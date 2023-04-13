@@ -21,7 +21,7 @@ export const useAuthStore = defineStore(
         return $toast.showError(res.error.message);
       }
 
-      $toast.showSuccess("Login is successfull!");
+      $toast.showSuccess("Login is successfull !");
       jwt.value = res.jwt;
       isAuthenticated.value = true;
       userProfile.value = res.user;
@@ -35,7 +35,7 @@ export const useAuthStore = defineStore(
         return $toast.showError(res.error.message);
       }
 
-      $toast.showSuccess("Register is successfull!");
+      $toast.showSuccess("Register is successfull !");
       jwt.value = res.jwt;
       isAuthenticated.value = true;
       userProfile.value = res.user;

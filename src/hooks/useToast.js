@@ -3,6 +3,7 @@ import { useToast } from "vue-toast-notification";
 export default function useToaster() {
   const $toast = useToast({
     position: "top-right",
+    dismissible: true,
   });
 
   const showError = (message) => {

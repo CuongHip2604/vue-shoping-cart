@@ -1,5 +1,6 @@
 <template>
   <div
+    @click="navigateToDetail"
     class="h-[444px] w-[256px] p-4 flex flex-col gap-6 hover:shadow-card hover:cursor-pointer group"
   >
     <div class="w-full h-[330px] relative">
@@ -25,6 +26,7 @@
 <script setup>
 import IconCard from "../assets/icons/ic-cart.svg";
 import { useFormatCurrency } from "../hooks/useFormatCurrency";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   product: {
@@ -36,9 +38,19 @@ const props = defineProps({
 const $emit = defineEmits("add-cart");
 
 const { formatCurrency } = useFormatCurrency();
+const $router = useRouter();
 
 const addToCart = () => {
   $emit("add-cart", props.product);
+};
+
+const navigateToDetail = () => {
+  $router.push({
+    name: "product-detail",
+    params: {
+      id: props.product.id,
+    },
+  });
 };
 </script>
 

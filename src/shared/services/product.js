@@ -6,4 +6,9 @@ export default {
       .then((res) => res)
       .catch((error) => error);
   },
+  getProduct: (params) => {
+    return callAPI("get", `products/${params.id}`, { params })
+      .then((res) => res)
+      .catch((error) => error);
+  },
 };

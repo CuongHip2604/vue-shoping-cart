@@ -13,7 +13,7 @@
               Colorful summer dresses <br />
               are already in store
             </div>
-            <Button width="167" :label="'Learn more'.toUpperCase()" />
+            <Button :width="167" :label="'Learn more'.toUpperCase()" />
           </div>
         </div>
       </div>

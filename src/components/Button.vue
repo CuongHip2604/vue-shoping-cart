@@ -1,13 +1,9 @@
 <template>
   <button
     @click="onClick"
-    class="relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full py-2 font-semibold border-2"
+    :class="classes"
+    class="relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition py-2 px-4 font-semibold border-2"
     :disabled="disabled"
-    :class="{
-      'bg-rose-500 border-rose-500 text-white': !outline,
-      'bg-white border-black text-black': outline,
-      [`w-[${width}px]`]: width,
-    }"
   >
     <div>
       <span>{{ label }}</span>
@@ -16,14 +12,25 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from "@vue/reactivity";
+
+const props = defineProps({
   outline: Boolean,
   label: {
     type: String,
     require: true,
   },
   disabled: Boolean,
-  width: String | Number,
+  width: Number,
+});
+
+const classes = computed(() => {
+  return {
+    "bg-rose-500 border-rose-500 text-white": !props.outline,
+    "bg-white border-black text-black": props.outline,
+    [`w-[${props.width}px]`]: !!props.width,
+    "w-full": !props.width,
+  };
 });
 
 const $emit = defineEmits(["onClick"]);
