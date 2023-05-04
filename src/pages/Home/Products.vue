@@ -1,7 +1,12 @@
 <template>
   <div class="flex flex-col gap-6">
     <div class="text-4xl text-neutral-500 font-light">{{ label }}</div>
-    <Carousel :items-to-show="5" wrapAround class="product-container">
+    <Carousel
+      :items-to-show="5"
+      :autoplay="5000"
+      wrapAround
+      class="product-container"
+    >
       <Slide v-for="product in products" :key="product.id">
         <Card :product="product" @add-cart="handleAddCart" />
       </Slide>
@@ -37,7 +42,16 @@ const handleAddCart = async (product) => {
 </script>
 
 <style lang="scss">
-.product-container .carousel__track {
-  padding: 20px 0 !important;
+.product-container {
+  .carousel__track {
+    padding: 20px 0 !important;
+  }
+
+  .carousel__prev {
+    left: -28px;
+  }
+  .carousel__next {
+    right: -28px;
+  }
 }
 </style>

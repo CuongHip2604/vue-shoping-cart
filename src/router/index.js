@@ -25,6 +25,11 @@ const routes = [
         name: "search",
         component: () => import("../pages/Search/index.vue"),
       },
+      {
+        path: "/profile",
+        name: "profile",
+        component: () => import("../pages/Profile/index.vue"),
+      },
     ],
   },
   {

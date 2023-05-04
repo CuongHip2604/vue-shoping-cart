@@ -50,6 +50,30 @@ export const useAuthStore = defineStore(
       $router.push("/login");
     };
 
+    const updateProfile = async (id, payload) => {
+      const res = await API.updateProfile(id, payload);
+
+      if (res.error) {
+        return $toast.showError(res.error.message);
+      }
+
+      $toast.showSuccess("Updating profile is successfull !");
+
+      userProfile.value = res;
+    };
+
+    const changePassword = async (payload) => {
+      const res = await API.changePassword(payload);
+
+      if (res.error) {
+        return $toast.showError(res.error.message);
+      }
+
+      $toast.showSuccess("Change password is successfull !");
+      jwt.value = res.jwt;
+      userProfile.value = res.user;
+    };
+
     return {
       isAuthenticated,
       login,
@@ -57,6 +81,8 @@ export const useAuthStore = defineStore(
       jwt,
       register,
       logout,
+      updateProfile,
+      changePassword,
     };
   },
   {

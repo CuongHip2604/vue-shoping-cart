@@ -80,6 +80,7 @@ const onMenuClick = (key) => {
       break;
 
     default:
+      router.push("/profile");
       break;
   }
 };

@@ -11,4 +11,14 @@ export default {
       .then((res) => res)
       .catch((error) => error);
   },
+  updateProfile: (id, params) => {
+    return callAPI("put", `users/${id}`, params)
+      .then((res) => res)
+      .catch((error) => error);
+  },
+  changePassword: (params) => {
+    return callAPI("post", "auth/change-password", params)
+      .then((res) => res)
+      .catch((error) => error);
+  },
 };
